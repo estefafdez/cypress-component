@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  component-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: my-new-sample-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: my-new-sample-app/package-lock.json
+      # react-scripts 5 has peer dependency conflicts with newer packages
+      - run: npm ci --legacy-peer-deps
+      - run: npx cypress run --component
