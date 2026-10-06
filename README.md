@@ -18,8 +18,27 @@ This talk is also a part of the Mes de QA, you can check the website here! https
 
 # How to run the tests.
 
-First, open a new tab on your terminal, go to the `my-new-sample-app` folder and do an `npm install` to install every dependency on the project.
+The React app and the tests live in the `my-new-sample-app` folder. You need [Node.js](https://nodejs.org/) and npm.
 
-On the same tab, run the command `npm run start` to start the React application in your localhost.
+```bash
+cd my-new-sample-app
+npm install --legacy-peer-deps
+```
 
-Then, open another tab and run cypress in open mode: `npm run open`, run the spec and enjoy!
+`--legacy-peer-deps` is needed because `react-scripts` 5 has peer dependency conflicts with newer packages.
+
+Run the component tests headless:
+
+```bash
+npm test
+```
+
+Or open Cypress and run the spec from the UI:
+
+```bash
+npm run open
+```
+
+To see the React application in your localhost, run `npm run start`.
+
+The Counter component is in `src/Counter.jsx` and its component test in `cypress/component/Counter.cy.js`. The tests run with Cypress 13: Cypress 14 removed support for Create React App.
