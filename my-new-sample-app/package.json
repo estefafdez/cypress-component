@@ -20,7 +20,7 @@
     "web-vitals": "^6.2.3"
   },
   "devDependencies": {
-    "cypress": "^16.1.1"
+    "cypress": "^16.2.0"
   },
   "eslintConfig": {
     "extends": [
